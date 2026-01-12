@@ -1,0 +1,27 @@
+# Python Backend
+__pycache__/
+*.py[cod]
+venv/
+.env
+.pytest_cache/
+
+# Flutter Mobile
+.dart_tool/
+.flutter-plugins
+.flutter-plugins-dependencies
+build/
+ios/Flutter/Generated.xcconfig
+ios/Flutter/flutter_export_environment.sh
+android/.gradle
+.pub-cache/
+
+# IDE Settings (VS Code)
+.vscode/
+.idea/
+
+# OS Junk
+.DS_Store
+Thumbs.db
+
+# Docker Data (If you have local volumes)
+postgres_data/
