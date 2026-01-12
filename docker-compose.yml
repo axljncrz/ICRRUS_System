@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  # 1. The Database Container
+  db:
+    image: postgres:15
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin123
+      POSTGRES_DB: icrrus_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  # 2. Your Python Backend Container
+  backend:
+    build: ./icrrus_backend
+    restart: always
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      # This tells Python to look for the server named 'db', not 'localhost'
+      DATABASE_URL: postgresql://postgres:admin123@db/icrrus_db
+
+volumes:
+  postgres_data:
